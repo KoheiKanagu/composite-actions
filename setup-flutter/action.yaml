@@ -11,7 +11,7 @@ runs:
         echo "$HOME/fvm/versions/stable/bin" >> $GITHUB_PATH
         echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
-    - name: Env
+    - name: ENV
       shell: bash
       run: |
         echo "FVM_VERSION=@3.0.0-beta.5" >> $GITHUB_ENV
@@ -27,33 +27,39 @@ runs:
       uses: actions/cache@v3
       if: runner.os == 'Linux'
       with:
-        path: "/home/runner/fvm/versions"
+        path: |
+          /home/runner/fvm/versions
+          /home/linuxbrew/.linuxbrew/Cellar/dart
+          /home/linuxbrew/.linuxbrew/Cellar/fvm${{ env.FVM_VERSION }}
         key: ${{ runner.os }}-flutter
 
-    - name: fvm Cache
-      uses: actions/cache@v3
-      if: runner.os == 'Linux'
-      with:
-        path: |
-          "/home/linuxbrew/.linuxbrew/Cellar/dart"
-          "/home/linuxbrew/.linuxbrew/Cellar/fvm${{ env.FVM_VERSION }}"
-        key: ${{ runner.os }}-fvm-${{ env.FVM_VERSION }}
+    # - name: fvm Cache
+    #   uses: actions/cache@v3
+    #   if: runner.os == 'Linux'
+    #   with:
+    #     path: |
+    #       "/home/linuxbrew/.linuxbrew/Cellar/dart"
+    #       "/home/linuxbrew/.linuxbrew/Cellar/fvm${{ env.FVM_VERSION }}"
+    #     key: ${{ runner.os }}-fvm-${{ env.FVM_VERSION }}
 
     - name: Flutter Cache
       uses: actions/cache@v3
       if: runner.os == 'macOS'
       with:
-        path: "/Users/runner/fvm/versions"
+        path: |
+          /Users/runner/fvm/versions
+          /usr/local/Cellar/dart
+          /usr/local/Cellar/fvm${{ env.FVM_VERSION }}
         key: ${{ runner.os }}-flutter
 
-    - name: fvm Cache
-      uses: actions/cache@v3
-      if: runner.os == 'macOS'
-      with:
-        path: |
-          "/usr/local/Cellar/dart"
-          "/usr/local/Cellar/fvm${{ env.FVM_VERSION }}"
-        key: ${{ runner.os }}-fvm-${{ env.FVM_VERSION }}
+    # - name: fvm Cache
+    #   uses: actions/cache@v3
+    #   if: runner.os == 'macOS'
+    #   with:
+    #     path: |
+    #       "/usr/local/Cellar/dart"
+    #       "/usr/local/Cellar/fvm${{ env.FVM_VERSION }}"
+    #     key: ${{ runner.os }}-fvm-${{ env.FVM_VERSION }}
 
     - name: Setup fvm
       shell: bash

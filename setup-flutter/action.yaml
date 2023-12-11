@@ -16,12 +16,10 @@ runs:
         echo "$HOME/fvm/versions/${{ inputs.flutter_branch }}/bin" >> $GITHUB_PATH
         echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
-    - name: Homebrew PATH
+    - name: Set up Homebrew
       shell: bash
       if: runner.os == 'Linux'
-      run: |
-        # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#homebrew-note
-        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+      uses: Homebrew/actions/setup-homebrew@master
 
     - name: Setup fvm
       shell: bash

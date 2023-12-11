@@ -20,6 +20,7 @@ runs:
       shell: bash
       if: runner.os == 'linux'
       run: |
+        # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#homebrew-note
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
     - name: Setup fvm

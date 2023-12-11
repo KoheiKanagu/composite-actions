@@ -18,7 +18,7 @@ runs:
 
     - name: Homebrew PATH
       shell: bash
-      if: runner.os == 'linux'
+      if: runner.os == 'Linux'
       run: |
         # https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md#homebrew-note
         eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

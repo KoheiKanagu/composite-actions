@@ -28,7 +28,8 @@ runs:
       uses: actions/cache@v3
       if: runner.os == 'Linux'
       with:
-        path: "/home/linuxbrew/.linuxbrew/Cellar"
+        path: |
+          "/home/linuxbrew/.linuxbrew/Cellar/dart"
         key: ${{ runner.os }}-homebrew
 
     - name: Flutter Cache
@@ -42,7 +43,8 @@ runs:
       uses: actions/cache@v3
       if: runner.os == 'macOS'
       with:
-        path: "/usr/local/Cellar/"
+        path: |
+          "/usr/local/Cellar/dart"
         key: ${{ runner.os }}-homebrew
 
     - name: Setup fvm

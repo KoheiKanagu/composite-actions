@@ -10,3 +10,5 @@ jobs:
     steps:
       # - uses: KoheiKanagu/composite-actions/run-actionlint@main
       - uses: KoheiKanagu/composite-actions/setup-flutter@main
+
+      - run: fvm flutter doctor -v

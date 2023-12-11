@@ -1,19 +1,14 @@
 name: Setup Flutter
 description: Setup Flutter SDK
 
-inputs:
-  flutter_branch:
-    description: Flutter branch
-    required: false
-    default: "beta"
-
 runs:
   using: "composite"
   steps:
     - name: PATH
       shell: bash
       run: |
-        echo "$HOME/fvm/versions/${{ inputs.flutter_branch }}/bin" >> $GITHUB_PATH
+        echo "$HOME/fvm/versions/beta/bin" >> $GITHUB_PATH
+        echo "$HOME/fvm/versions/stable/bin" >> $GITHUB_PATH
         echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
     - name: Setup Homebrew
@@ -27,7 +22,6 @@ runs:
       run: |
         brew tap leoafarias/fvm
         brew install fvm@3.0.0-beta.5
-        fvm install ${{ inputs.flutter_branch }} --setup
         fvm doctor
 
     - name: Setup global packages

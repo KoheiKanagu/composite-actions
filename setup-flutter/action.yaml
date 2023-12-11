@@ -16,6 +16,12 @@ runs:
         echo "$HOME/fvm/versions/${{ inputs.flutter_branch }}/bin" >> $GITHUB_PATH
         echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
+    - name: Homebrew PATH
+      shell: bash
+      if: runner.os == 'linux'
+      run: |
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
     - name: Setup fvm
       shell: bash
       run: |

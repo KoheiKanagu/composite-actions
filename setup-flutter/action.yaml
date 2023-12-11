@@ -30,12 +30,14 @@ runs:
         path: "/home/runner/fvm/versions"
         key: ${{ runner.os }}-flutter
 
-    - name: Homebrew Cache
+    - name: fvm Cache
       uses: actions/cache@v3
       if: runner.os == 'Linux'
       with:
-        path: "/home/linuxbrew/.linuxbrew/Cellar/dart"
-        key: ${{ runner.os }}-homebrew-${{ env.FVM_VERSION }}
+        path: |
+          "/home/linuxbrew/.linuxbrew/Cellar/dart"
+          "/home/linuxbrew/.linuxbrew/Cellar/fvm${{ env.FVM_VERSION }}"
+        key: ${{ runner.os }}-fvm-${{ env.FVM_VERSION }}
 
     - name: Flutter Cache
       uses: actions/cache@v3
@@ -44,12 +46,14 @@ runs:
         path: "/Users/runner/fvm/versions"
         key: ${{ runner.os }}-flutter
 
-    - name: Homebrew Cache
+    - name: fvm Cache
       uses: actions/cache@v3
       if: runner.os == 'macOS'
       with:
-        path: "/usr/local/Cellar/dart"
-        key: ${{ runner.os }}-homebrew-${{ env.FVM_VERSION }}
+        path: |
+          "/usr/local/Cellar/dart"
+          "/usr/local/Cellar/fvm${{ env.FVM_VERSION }}"
+        key: ${{ runner.os }}-fvm-${{ env.FVM_VERSION }}
 
     - name: Setup fvm
       shell: bash

@@ -20,7 +20,7 @@ runs:
     - name: Flutter Cache
       uses: actions/cache@v3
       with:
-        path: "$HOME/fvm/versions"
+        path: "/home/runner/fvm/versions"
         key: ${{ runner.os }}-flutter
 
     - name: Setup fvm

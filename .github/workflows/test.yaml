@@ -14,3 +14,14 @@ jobs:
       - uses: KoheiKanagu/composite-actions/setup-flutter@main
 
       - run: fvm flutter doctor -v
+
+  test_macOS:
+    runs-on: macOS-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # - uses: KoheiKanagu/composite-actions/run-actionlint@main
+      - uses: KoheiKanagu/composite-actions/setup-flutter@main
+
+      - run: fvm flutter doctor -v

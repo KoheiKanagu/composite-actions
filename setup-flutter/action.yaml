@@ -1,0 +1,43 @@
+name: Setup Flutter
+description: Setup Flutter SDK
+
+inputs:
+  use_local_dart:
+    description: Use local Dart SDK
+    required: false
+    default: "false"
+
+  flutter_branch:
+    description: Flutter branch
+    required: false
+    default: "beta"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Clone Flutter
+      if: inputs.use_local_dart == 'false'
+      shell: bash
+      run: |
+        git clone https://github.com/flutter/flutter.git \
+          -b ${{ inputs.flutter_branch }} \
+          --depth 1 \
+          $HOME/fvm/versions/${{ inputs.flutter_branch }}
+
+    - name: PATH
+      if: inputs.use_local_dart == 'false'
+      shell: bash
+      run: |
+        echo "$HOME/fvm/versions/${{ inputs.flutter_branch }}/bin" >> $GITHUB_PATH
+        echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+
+    - name: Setup global packages
+      shell: bash
+      run: |
+        dart pub global activate melos
+        dart pub global activate fvm
+        dart pub global activate flutterfire_cli 0.3.0-dev.18 --overwrite
+
+    - name: fvm
+      shell: bash
+      run: fvm doctor

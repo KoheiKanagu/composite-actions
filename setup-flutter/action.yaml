@@ -11,6 +11,12 @@ runs:
         echo "$HOME/fvm/versions/stable/bin" >> $GITHUB_PATH
         echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
 
+    - name: Env
+      shell: bash
+      run: |
+        echo "FVM_VERSION=@3.0.0-beta.5" >> $GITHUB_ENV
+        echo "FLUTTERFIRE_VERSION=0.3.0-dev.18" >> $GITHUB_ENV
+
     - name: Setup Homebrew
       shell: bash
       if: runner.os == 'Linux'
@@ -28,9 +34,8 @@ runs:
       uses: actions/cache@v3
       if: runner.os == 'Linux'
       with:
-        path: |
-          "/home/linuxbrew/.linuxbrew/Cellar/dart"
-        key: ${{ runner.os }}-homebrew
+        path: "/home/linuxbrew/.linuxbrew/Cellar/dart"
+        key: ${{ runner.os }}-homebrew-$FVM_VERSION
 
     - name: Flutter Cache
       uses: actions/cache@v3
@@ -43,15 +48,14 @@ runs:
       uses: actions/cache@v3
       if: runner.os == 'macOS'
       with:
-        path: |
-          "/usr/local/Cellar/dart"
-        key: ${{ runner.os }}-homebrew
+        path: "/usr/local/Cellar/dart"
+        key: ${{ runner.os }}-homebrew-$FVM_VERSION
 
     - name: Setup fvm
       shell: bash
       run: |
         brew tap leoafarias/fvm
-        brew install fvm@3.0.0-beta.5
+        brew install fvm$FVM_VERSION
         brew unlink dart
 
         fvm install
@@ -61,4 +65,4 @@ runs:
       shell: bash
       run: |
         dart pub global activate melos
-        dart pub global activate flutterfire_cli 0.3.0-dev.18 --overwrite
+        dart pub global activate flutterfire_cli $FLUTTERFIRE_VERSION --overwrite

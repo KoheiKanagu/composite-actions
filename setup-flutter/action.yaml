@@ -36,7 +36,6 @@ runs:
       with:
         path: |
           /home/linuxbrew/.linuxbrew/Cellar/dart
-          /home/linuxbrew/.linuxbrew/Cellar/fvm${{ env.FVM_VERSION }}
         key: ${{ runner.os }}-fvm-${{ env.FVM_VERSION }}
 
     - name: Flutter Cache
@@ -52,7 +51,6 @@ runs:
       with:
         path: |
           /usr/local/Cellar/dart
-          /usr/local/Cellar/fvm${{ env.FVM_VERSION }}
         key: ${{ runner.os }}-fvm-${{ env.FVM_VERSION }}
 
     - name: Setup fvm

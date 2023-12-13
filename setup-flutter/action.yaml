@@ -22,14 +22,19 @@ runs:
       if: runner.os == 'Linux'
       with:
         path: /home/runner/fvm/versions
-        key: ${{ runner.os }}-flutter
+        key: ${{ runner.os }}-flutter-${{ github.run_id }}
+        restore-keys: |
+          ${{ runner.os }}-flutter-
+
 
     - name: Flutter Cache
       uses: actions/cache@v3
       if: runner.os == 'macOS'
       with:
         path: /Users/runner/fvm/versions
-        key: ${{ runner.os }}-flutter
+        key: ${{ runner.os }}-flutter-${{ github.run_id }}
+        restore-keys: |
+          ${{ runner.os }}-flutter-
 
     - name: Setup fvm
       shell: bash

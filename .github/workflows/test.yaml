@@ -18,6 +18,9 @@ jobs:
       - run: flutter --version
       - run: dart --version
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+
   test_macOS:
     runs-on: macOS-latest
 

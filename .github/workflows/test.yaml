@@ -15,6 +15,9 @@ jobs:
 
       - run: fvm flutter doctor -v
 
+      - run: flutter --version
+      - run: dart --version
+
   test_macOS:
     runs-on: macOS-latest
 
@@ -25,3 +28,6 @@ jobs:
       - uses: KoheiKanagu/composite-actions/setup-flutter@main
 
       - run: fvm flutter doctor -v
+
+      - run: flutter --version
+      - run: dart --version

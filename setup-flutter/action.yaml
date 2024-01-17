@@ -18,7 +18,7 @@ runs:
         echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
 
     - name: Flutter Cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       if: runner.os == 'Linux'
       with:
         path: /home/runner/fvm/versions
@@ -28,7 +28,7 @@ runs:
 
 
     - name: Flutter Cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       if: runner.os == 'macOS'
       with:
         path: /Users/runner/fvm/versions

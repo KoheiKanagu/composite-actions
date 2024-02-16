@@ -40,7 +40,7 @@ runs:
       shell: bash
       run: |
         brew tap leoafarias/fvm
-        brew install fvm@3.0.0-beta.5
+        brew install fvm
         brew unlink dart
 
         fvm install

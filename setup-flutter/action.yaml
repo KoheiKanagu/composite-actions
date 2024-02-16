@@ -26,7 +26,6 @@ runs:
         restore-keys: |
           ${{ runner.os }}-flutter-
 
-
     - name: Flutter Cache
       uses: actions/cache@v4
       if: runner.os == 'macOS'
@@ -42,9 +41,13 @@ runs:
         brew tap leoafarias/fvm
         brew install fvm
 
+        version=$(jq .flutter --raw-output .fvmrc)
+
+        fvm install "$version"
+
         # If there is no .vscode directory, fvm will ask if it is a VSCode project.
         mkdir -p .vscode
-        fvm use --force
+        fvm use "$version" --force
 
         fvm doctor
 

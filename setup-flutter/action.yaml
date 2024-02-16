@@ -42,7 +42,7 @@ runs:
         brew tap leoafarias/fvm
         brew install fvm
 
-        fvm use
+        fvm use --force
 
         # If there is no .vscode directory, fvm will ask if it is a VSCode project.
         mkdir -p .vscode

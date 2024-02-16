@@ -41,7 +41,6 @@ runs:
       run: |
         brew tap leoafarias/fvm
         brew install fvm
-        brew unlink dart
 
         fvm install
 

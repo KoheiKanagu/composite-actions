@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
 
       # - uses: KoheiKanagu/composite-actions/run-actionlint@main
-      - uses: KoheiKanagu/composite-actions/setup-flutter@main
+      - uses: KoheiKanagu/composite-actions/setup-flutter@cache
         with:
           no-cache: "true"
 
@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v4
 
       # - uses: KoheiKanagu/composite-actions/run-actionlint@main
-      - uses: KoheiKanagu/composite-actions/setup-flutter@main
+      - uses: KoheiKanagu/composite-actions/setup-flutter@cache
         with:
           no-cache: "true"
 

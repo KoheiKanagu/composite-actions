@@ -17,8 +17,6 @@ jobs:
 
       # - uses: KoheiKanagu/composite-actions/run-actionlint@main
       - uses: KoheiKanagu/composite-actions/setup-flutter@cache
-        with:
-          no-cache: 'true'
 
       - run: fvm flutter doctor -v
 
@@ -34,7 +32,7 @@ jobs:
       # - uses: KoheiKanagu/composite-actions/run-actionlint@main
       - uses: KoheiKanagu/composite-actions/setup-flutter@cache
         with:
-          no-cache: 'true'
+          cache: 'false'
 
       - run: fvm flutter doctor -v
 

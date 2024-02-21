@@ -25,7 +25,7 @@ runs:
 
     - name: Flutter Cache
       uses: actions/cache@v4
-      if: runner.os == 'Linux' && inputs.no-cache == "true"
+      if: runner.os == 'Linux' && inputs.no-cache == 'true'
       with:
         path: /home/runner/fvm/versions
         key: ${{ runner.os }}-flutter-${{ github.run_id }}
@@ -34,7 +34,7 @@ runs:
 
     - name: Flutter Cache
       uses: actions/cache@v4
-      if: runner.os == 'macOS' && inputs.no-cache == "true"
+      if: runner.os == 'macOS' && inputs.no-cache == 'true'
       with:
         path: /Users/runner/fvm/versions
         key: ${{ runner.os }}-flutter-${{ github.run_id }}

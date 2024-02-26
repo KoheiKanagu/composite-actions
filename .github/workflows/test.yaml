@@ -15,8 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - uses: KoheiKanagu/composite-actions/run-actionlint@main
-      - uses: KoheiKanagu/composite-actions/setup-flutter@cache
+      - uses: KoheiKanagu/composite-actions/run-actionlint@main
 
       - run: fvm flutter doctor -v
 
@@ -29,8 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # - uses: KoheiKanagu/composite-actions/run-actionlint@main
-      - uses: KoheiKanagu/composite-actions/setup-flutter@cache
+      - uses: KoheiKanagu/composite-actions/run-actionlint@main
         with:
           cache: 'true'
 

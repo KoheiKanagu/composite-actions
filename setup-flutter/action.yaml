@@ -47,14 +47,7 @@ runs:
         brew tap leoafarias/fvm
         brew install fvm
 
-        # Specifying a version to avoid being prompted for input
-        # https://github.com/leoafarias/fvm/issues/579
-        version=$(jq .flutter --raw-output .fvmrc)
-        fvm install "$version"
-
-        # If there is no .vscode directory, fvm will ask if it is a VSCode project.
-        mkdir -p .vscode
-        fvm use "$version" --force
+        fvm use --force
 
         fvm doctor
 

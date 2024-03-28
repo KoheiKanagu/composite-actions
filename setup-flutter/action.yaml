@@ -49,6 +49,8 @@ runs:
 
         fvm use --force
 
+        flutter upgrade
+
         fvm doctor
 
     - name: Setup global packages

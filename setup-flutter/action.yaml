@@ -51,6 +51,12 @@ runs:
 
         fvm doctor
 
+    - name: Precache iOS[]
+      shell: bash
+      if: runner.os == 'macOS'
+      run: |
+        flutter precache --ios
+
     - name: Setup global packages
       shell: bash
       run: |

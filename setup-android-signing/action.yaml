@@ -8,22 +8,28 @@ inputs:
   signing_configs_base64:
     description: Signing configs base64
     required: true
+  signing_configs_name:
+    description: Signing configs name
+    default: signingConfigs.gradle
   upload_keystore_base64:
     description: Upload keystore base64
     required: true
+  upload_keystore_name:
+    description: Upload keystore name
+    default: upload-keystore.jks
 
 runs:
   using: "composite"
   steps:
     ### Decode ###
-    - name: Decode signingConfigs.gradle
+    - name: Decode Singing Configs
       shell: bash
       working-directory: packages/${{ inputs.package }}
       run: |
-        echo ${{ inputs.signing_configs_base64 }} | base64 --decode > android/app/signingConfigs.gradle
+        echo ${{ inputs.signing_configs_base64 }} | base64 --decode > android/app/${{ inputs.signing_configs_name }}
 
-    - name: Decode upload-keystore.jks
+    - name: Decode Upload Keystore
       shell: bash
       working-directory: packages/${{ inputs.package }}
       run: |
-        echo ${{ inputs.upload_keystore_base64 }} | base64 --decode > android/app/upload-keystore.jks
+        echo ${{ inputs.upload_keystore_base64 }} | base64 --decode > android/app/${{ inputs.upload_keystore_name }}
